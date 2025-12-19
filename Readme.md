@@ -1,3 +1,4 @@
+<img width="904" height="563" alt="1" src="https://github.com/user-attachments/assets/d2890564-b57f-4b8a-97e5-b158fdb61e5b" />
 
 
 I use Kiro to create this program in 10 mins.
@@ -5,6 +6,7 @@ Copy the code to your web server and open the index.html
 
 If you want to try it,
 1. Download and run Kiro, https://kiro.dev/
+<img width="1249" height="716" alt="2" src="https://github.com/user-attachments/assets/1036de45-4d5c-4e04-8c27-a6810e438c17" />
 
 Below is the conversation with the AI
 
