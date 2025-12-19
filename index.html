@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Interactive Rubik's Cube</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+        
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        #canvas-container {
+            flex: 2;
+            position: relative;
+        }
+        
+        #ui-panel {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        
+        .control-section {
+            margin-bottom: 30px;
+        }
+        
+        .control-section h3 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+        
+        #move-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .button:hover:not(:disabled) {
+            background: #5a6fd8;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        #moves-display {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        #solution-display {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .move-item {
+            padding: 2px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .move-item:last-child {
+            border-bottom: none;
+        }
+        
+        #instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="canvas-container"></div>
+        <div id="ui-panel">
+            <div class="control-section">
+                <h3>Controls</h3>
+                <input type="text" id="move-input" placeholder="Enter moves (e.g., R U R' U')" />
+                <button class="button" onclick="executeMove()">Execute Move</button>
+                <button class="button" onclick="scrambleCube()">Scramble</button>
+                <button class="button" onclick="resetCube()">Reset</button>
+                <button class="button" onclick="solveCube()">Solve</button>
+            </div>
+            
+            <div class="control-section">
+                <h3>Move History</h3>
+                <div id="moves-display"></div>
+            </div>
+            
+            <div class="control-section">
+                <h3>Solution</h3>
+                <div id="solution-display">Click "Solve" to get the shortest solution</div>
+            </div>
+            
+            <div class="control-section">
+                <h3>Instructions</h3>
+                <div id="instructions">
+                    <strong>Mouse Controls:</strong><br>
+                    • Left click + drag: Rotate cube<br>
+                    • Right click + drag: Pan camera<br>
+                    • Scroll: Zoom in/out<br><br>
+                    <strong>Move Notation:</strong><br>
+                    • R, L, U, D, F, B: Face rotations<br>
+                    • Add ' for counter-clockwise (e.g., R')<br>
+                    • Add 2 for double turn (e.g., R2)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/rubik-cube.js"></script>
+    <script src="js/cube-solver.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
