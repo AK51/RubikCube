@@ -1,5 +1,11 @@
+
+
 I use Kiro to create this program in 10 mins.
+Copy the code to your web server and open the index.html
+
+If you want to try it,
 1. Download and run Kiro, https://kiro.dev/
+
 Below is the conversation with the AI
 
 I want to build a 3D interactive rubik's cube using three.js. The UI includes a 3D Rubik's  cube, a display of the moves and an input box of a sequence of the moves. The program also gives a shortest move sequence of solving the rubik's cube.
